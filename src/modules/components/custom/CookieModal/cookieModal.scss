@@ -1,0 +1,67 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.cookie-modal {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  margin-right: 20px;
+  max-width: 500px;
+  background: #1a1917;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #fff;
+
+  .cookie-text {
+    margin-bottom: 12px;
+  }
+
+  .cookie-links {
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .cookie-buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+
+      &.decline {
+        border: 1px white solid;
+        color: white;
+      }
+
+      &.accept {
+        background: white;
+        color: black;
+      }
+
+      &.settings {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,141 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+#menu-container {
+  position: relative;
+}
+
+#menu-wrapper {
+  cursor: pointer;
+}
+
+#menu-wrapper #hamburger-menu {
+  width: 25px;
+  height: 20px;
+  margin: 15px;
+  position: relative;
+  display: block;
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+#menu-container .menu-list {
+  position: fixed;
+  width: 100%;
+  padding-left: 0px;
+  background: white;
+  box-shadow: rgba(100, 100, 100, 0.2) 6px 6px 10px;
+  z-index: 999;
+  top: 0;
+  left: -100%;
+  transition: left 0.4s ease-in-out;
+  margin-top: 50px;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @include on-tablet {
+    margin-top: 100px;
+  }
+}
+
+#menu-container .menu-list.active {
+  left: 0;
+}
+
+.accordion-content {
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  max-height: 0;
+}
+
+.accordion-content.open {
+  display: block;
+  max-height: 700px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.toggle {
+  padding: 15px 10px;
+  border-top: 1px solid grey;
+}
+
+.menu-link {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.head,
+.subhead,
+.menu-link {
+  color: black;
+}
+
+.head {
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.subhead-box {
+  margin: 5px 0;
+}
+
+.menu-submenu {
+  padding-left: 20px;
+}
+
+.submenu-box {
+  margin-top: 20px;
+}
+
+.head + ul {
+  padding-left: 20px;
+}
+
+#menu-wrapper #hamburger-menu {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  margin: 15px;
+}
+
+#menu-wrapper #hamburger-menu span {
+  opacity: 1;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  color: black;
+  background-color: black;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: 0.4s ease-in-out;
+}
+
+#menu-wrapper #hamburger-menu span:nth-child(1) {
+  top: 0;
+}
+#menu-wrapper #hamburger-menu span:nth-child(2) {
+  top: 9px;
+}
+#menu-wrapper #hamburger-menu span:nth-child(3) {
+  top: 18px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(1) {
+  transform: translateY(9px) rotate(135deg);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-135deg);
+}

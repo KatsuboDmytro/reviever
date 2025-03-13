@@ -1,0 +1,141 @@
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chatbot-button {
+  width: 60px;
+  height: 60px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.chatbot-button:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-icon {
+  font-size: 30px;
+  color: white;
+  display: flex;
+}
+
+/* Вікно чату */
+.chat-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 330px;
+  height: 70vh;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Анімація відкриття */
+.chat-window.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Заголовок чату */
+.chat-header {
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+
+  h4 {
+    margin-block: 10px;
+  }
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.chat-history {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding: 10px;
+  overflow-y: auto;
+  grid-auto-rows: min-content;
+}
+
+.message {
+  margin: 10px 0;
+  display: inline-block;
+  max-width: 100%;
+  width: fit-content;
+  min-width: min-content;
+  grid-column: auto / -1;
+  justify-self: end;
+  padding: 10px;
+  border-radius: 10px;
+  word-break: break-word;
+}
+
+.message.user {
+  background-color: #e0ffe0;
+  grid-column: 2 / -1;
+  border-radius: 10px 10px 0 10px;
+}
+
+.message.ai {
+  background-color: #e6e6e6;
+  grid-column: 1 / 8;
+  border-radius: 10px 10px 10px 0;
+}
+
+/* Поле вводу */
+.chat-input-form {
+  display: flex;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 0 0 8px 8px;
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-input-form button {
+  background: linear-gradient(45deg, #6a5acd, #00bfff);
+  background-size: 200% 200%;
+  transition:
+    background 0.5s ease,
+    transform 0.3s ease;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.chat-input-form button:hover {
+  background-position: 100% 100%;
+}

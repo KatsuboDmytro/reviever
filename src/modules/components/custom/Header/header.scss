@@ -1,0 +1,144 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: -webkit-fill-available;
+  backdrop-filter: blur(20px);
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.3s ease-in-out;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1);
+  height: $header-height;
+
+  @include on-tablet {
+    height: $header-height-desktop;
+  }
+
+  &.expanded {
+    height: 450px;
+  }
+
+  &__logos {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+
+    @include on-tablet {
+      gap: 20px;
+    }
+
+    img {
+      cursor: pointer;
+    }
+
+    img:nth-child(2) {
+      width: 100px;
+
+      @include on-tablet {
+        width: 150px;
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    &-item {
+      padding: 4px 10px;
+      border-radius: 5px;
+      color: #000000;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &-checked {
+        background-color: #000000;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #414141 !important;
+        }
+      }
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @include on-tablet {
+      gap: 20px;
+    }
+
+    & .img {
+      cursor: pointer;
+    }
+  }
+}
+
+.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.box__dropdown {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  width: -webkit-fill-available;
+  position: absolute;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(20px);
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-column h4 {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dropdown-column p {
+  margin: 5px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dropdown-column p:hover {
+  text-decoration: underline;
+}

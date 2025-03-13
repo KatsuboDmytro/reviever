@@ -1,0 +1,143 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    padding-top: 200px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 170%;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 2.5rem;
+    }
+
+    @include on-desktop {
+      font-size: 4rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 170%;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.marked {
+  background-color: #000000;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.marked:nth-child(3) {
+  position: relative;
+}
+
+.marked:nth-child(3)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  width: 15px;
+  height: 15px;
+  background-image: url("/img/icons/ai.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    top: -20px;
+    right: -25px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.img_temp {
+  display: block;
+  height: 200px;
+  width: 100%;
+  background-color: #f2f2f2f2;
+  border-radius: 15px;
+
+  @include on-desktop {
+    width: 500px;
+    height: auto;
+  }
+}
+
+.works {
+  @include grid;
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+    text-align: center;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    grid-row: 2 / 2;
+
+    @include on-desktop {
+      grid-column: 4 / 23;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 0px;
+
+    @include on-desktop {
+      margin-top: 75px;
+      flex-direction: row;
+    }
+
+    &-reverse {
+      flex-direction: column-reverse;
+
+      @include on-desktop {
+        flex-direction: row;
+      }
+    }
+
+    &-text {
+      width: 100%;
+      margin-bottom: 32px;
+
+      @include on-desktop {
+        width: 50%;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 32px 0 20px;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 170%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
