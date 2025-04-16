@@ -36,9 +36,6 @@ export const CookieModal: React.FC = () => {
         «Налаштувати файли cookie».
       </p>
       <div className="cookie-buttons">
-        <button className="settings" onClick={handleSettings}>
-          Налаштувати файли cookie
-        </button>
         <button className="decline" onClick={handleDecline}>
           Відхилити
         </button>

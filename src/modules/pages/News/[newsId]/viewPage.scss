@@ -1,0 +1,46 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.m-preview {
+  margin-top: 100px !important;
+
+  @include on-tablet {
+    margin-top: 150px !important;
+  }
+}
+
+.view {
+  &__main {
+    max-width: 1900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__bottom {
+    margin-top: 100px;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+
+    &-analytics {
+      display: flex;
+      justify-content: space-between;
+      width: 100px;
+      height: 100%;
+      position: relative;
+
+      &-item {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+}

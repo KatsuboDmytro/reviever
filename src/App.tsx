@@ -1,13 +1,11 @@
 import { Navigate, Outlet } from "react-router";
-
-import { useUser } from "@clerk/clerk-react";
-
-import { Header } from "./modules";
+import { Footer, Header } from "./modules";
+import { useAppSelector } from "./app/hooks";
 
 export const App = () => {
-  const { isLoaded, isSignedIn } = useUser();
+  const { authors } = useAppSelector((state) => state.authors);
 
-  if (!isSignedIn && isLoaded) {
+  if (authors === null) {
     return <Navigate to="/auth/sign-in" />;
   }
 
@@ -15,6 +13,7 @@ export const App = () => {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 };

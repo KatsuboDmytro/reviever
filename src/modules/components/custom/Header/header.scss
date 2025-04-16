@@ -85,7 +85,7 @@
 
   &__actions {
     display: flex;
-    align-items: center;
+    align-items: anchor-center;
     gap: 5px;
 
     @include on-tablet {
@@ -95,6 +95,10 @@
     & .img {
       cursor: pointer;
     }
+  }
+
+  &__settings {
+    cursor: pointer;
   }
 }
 

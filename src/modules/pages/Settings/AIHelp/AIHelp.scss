@@ -1,0 +1,11 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.ai {
+  margin-top: 50px;
+  display: grid;
+  
+  @include on-tablet {
+    margin-top: 100px;
+  }
+}

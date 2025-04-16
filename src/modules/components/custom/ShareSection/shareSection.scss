@@ -1,0 +1,53 @@
+.view__share {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+
+  a,
+  button {
+    color: #444;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #007bff;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &-label {
+    font-weight: 600;
+    color: #222;
+  }
+
+  &-copied {
+    font-size: 0.9rem;
+    color: green;
+    margin-left: 0.5rem;
+    animation: fadeInOut 2s ease-in-out;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

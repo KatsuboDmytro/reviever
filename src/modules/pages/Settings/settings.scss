@@ -1,0 +1,108 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.settings {
+  background-color: #FAFAFB;
+  display: flex;
+
+  &__dashboard {
+    width: 100%;
+  }
+  
+  &__navbar {
+    background-color: #fff;
+    max-width: 70px;
+    height: 100vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+
+    @include on-tablet {
+      margin-top: 100px;
+    }
+
+    @include on-desktop {
+      min-width: 300px;
+    }
+
+    &-list {
+      padding-left: 0;
+      margin: 0;
+    }
+
+    &-user {
+      display: flex;
+      align-items: center;
+      padding: 20px 25px;
+      gap: 10px;
+      border-bottom: 1px solid #E5E5E5;
+      cursor: pointer;
+      color: black;
+
+      @include on-desktop {
+        padding: 20px 40px;
+      }
+
+      &-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      
+      &:hover {
+        background-color: #E6F6FF;
+        border-right: 3px solid #9DD2FF;
+      }
+
+      span {
+        display: none;
+
+        @include on-desktop {
+          display: block;
+        }
+      }
+    }
+
+    &-title {
+      margin: 20px;
+      display: none;
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      padding: 10px 15px;
+      cursor: pointer;
+      color: black;
+      border-right: 3px solid #ffffff;
+
+      &:hover {
+        background-color: #E6F6FF;
+        border-right: 3px solid #9DD2FF;
+      }
+
+      @include on-desktop {
+        padding: 20px 25px;
+        justify-content: start;
+        gap: 10px;
+      }
+
+      span {
+        display: none;
+
+        @include on-desktop {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  background-color: #E6F6FF;
+  border-right: 3px solid #9DD2FF;
+}

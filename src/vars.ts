@@ -144,3 +144,27 @@ export const menuContent: MenuContent = {
     },
   ],
 };
+
+export const contentTypes = [
+  { type: "text", label: "Текст" },
+  { type: "image", label: "Зображення" },
+  { type: "video", label: "Відео" },
+];
+
+export const getFormattedTimeAndDate = () => {
+  const now = new Date();
+
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  const year = String(now.getFullYear()).slice(-2);
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const time = `${hours}:${minutes}`;
+  const date = `${day}.${month}.${year}`;
+
+  return `${time + ', ' + date}`;
+};
+
+export const DEFAULT_AVATAR = "https://i.postimg.cc/3dPhnM8L/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg";

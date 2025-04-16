@@ -1,20 +1,46 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router";
-
-import { ClerkProvider } from "@clerk/clerk-react";
+import { ToastContainer } from "react-toastify";
 
 import { App } from "./App.tsx";
-import { HomePage, SignInPage } from "./modules/index.ts";
+import { store } from "./app/store.ts";
+import {
+  AIHelp,
+  EditNews,
+  HomePage,
+  NewsConstructor,
+  NewsPage,
+  SettingsPage,
+  SignInPage,
+  SignUpPage,
+  UserSetting,
+  ViewPage,
+} from "./modules/index.ts";
 import "./styles/index.scss";
 import "./styles/normalize.scss";
-
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const router = createBrowserRouter([
   {
     element: <App />,
-    children: [],
+    children: [
+      {
+        path: "/settings",
+        element: <SettingsPage />,
+        children: [
+          { path: "", element: <UserSetting /> },
+          { path: "ai", element: <AIHelp /> },
+          {
+            path: "news",
+            element: <NewsConstructor />,
+          },
+        ],
+      },
+      { path: "news/:newsId/edit", element: <EditNews /> },
+      { path: "news", element: <NewsPage /> },
+      { path: "news/:newsId/view", element: <ViewPage /> },
+    ],
   },
   {
     path: "/",
@@ -24,12 +50,19 @@ const router = createBrowserRouter([
     path: "/auth/sign-in",
     element: <SignInPage />,
   },
+  {
+    path: "/auth/sign-up",
+    element: <SignUpPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <Provider store={store}>
+      {/* <ClerkProvider publishableKey={PUBLISHABLE_KEY}> */}
+      <ToastContainer theme="dark" />
       <RouterProvider router={router} />
-    </ClerkProvider>
+      {/* </ClerkProvider> */}
+    </Provider>
   </StrictMode>,
 );

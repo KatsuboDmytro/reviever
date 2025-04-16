@@ -1,7 +1,14 @@
 @use "@/styles/utils/mixins" as *;
 
 * {
+  font-family: Mont !important;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.rsw-editor {
   font-family: Mont;
+  font-size: 16px !important;
 }
 
 .container {
@@ -14,4 +21,21 @@
   @include on-desktop {
     padding: 0 32px;
   }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+em {
+  font-weight: 500;
 }

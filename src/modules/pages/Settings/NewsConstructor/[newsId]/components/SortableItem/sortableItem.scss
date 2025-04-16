@@ -1,0 +1,61 @@
+.sortable-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.handle-icons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.drag-handle {
+  cursor: grab;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-handle {
+  cursor: pointer;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  .tooltip-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .tooltip-text {
+    width: 150px;
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 1);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+
+  &:hover .tooltip-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

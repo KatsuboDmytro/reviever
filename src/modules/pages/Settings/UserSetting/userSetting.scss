@@ -1,0 +1,214 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.user {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  
+  @include on-tablet {
+    margin-top: 100px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &__info {
+    border-radius: 10px;
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    @include on-desktop {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 5px;
+      }
+      
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+
+    &-area {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1 / -1;
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+      }
+    }
+  }
+
+  &__account {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    grid-column: 1 / -1;
+    background-color: #fff;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    @include on-desktop {
+      grid-column: 4 / -1;
+      margin-top: 20px;
+    }
+
+    &-cover {
+      width: 100%;
+      height: 183px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    &-user {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -100px;
+    }
+
+    &-name {
+      text-align: center;
+      margin-top: 70px;
+      
+      h2 {
+        margin: 0;
+      }
+    }
+
+    &-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-block: 15px;
+      
+      &-item {
+        padding-inline: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+
+        span:nth-child(2) {
+          font-size: 30px;
+          font-weight: 700;
+        }
+        
+        &:not(:nth-child(3)) {
+          border-right: 1px solid #ccc;
+        }
+      }
+    }
+
+    &-description {
+      padding-inline: 20px;
+    }
+    
+    &-contacts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+
+      &-socials {
+        display: flex;
+        gap: 10px;
+
+        img {
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.user__account-avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+.user__account-camera {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  width: 150px;
+  height: 75px;
+  background-color: #f0f0f0;
+  border-bottom-left-radius: 75px;
+  border-bottom-right-radius: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.user__account-avatar-wrapper:hover .user__account-camera {
+  transform: translate(-50%, 0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cover__camera {
+  position: absolute;
+  top: 110px;
+  left: 0px;
+  width: 60px;
+  height: 60px;
+  background: #585858;
+  border-radius: 0 40px 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.user__account-cover-wrapper:hover .cover__camera {
+  opacity: 1;
+  transform: translateY(0);
+}

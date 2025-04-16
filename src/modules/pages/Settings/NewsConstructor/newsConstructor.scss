@@ -1,0 +1,218 @@
+@use "@/styles/utils/mixins" as *;
+@use "@/styles/utils/vars" as *;
+
+.publication {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 120px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &__data {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-add {
+      margin-top: 20px;
+      height: 261.16px;
+      width: 350px;
+      background-color: #f1f0f0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        scale: 1.02;
+      }
+    }
+
+    &-item {
+      margin-top: 20px;
+      height: min-content;
+      width: 350px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      transition: all 0.3s;
+      overflow: hidden;
+      position: relative;
+
+      a {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+        transition: all 0.3s;
+
+        &:hover {
+          scale: 1.02;
+        }
+      }
+
+      &-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+
+        &-date {
+          color: #5f5f5f;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+
+      &-aside {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-inline: 10px;
+      }
+
+      &-down {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        width: 68%;
+        color: rgb(194, 194, 194);
+        margin-bottom: 20px;
+      }
+
+      &-image {
+        border-radius: 100% !important;
+        width: 36px !important;
+        height: 36px !important;
+      }
+
+      &-title {
+        height: 36.78px;
+        overflow: hidden;
+      
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      
+        font-weight: 500;
+        margin: 10px;
+        color: #000;
+        position: relative;
+      }
+      
+
+      &-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+
+        &-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          & + span {
+            color: #5f5f5f;
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+.unpublished {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  right: 0;
+  bottom: -15px;
+}
+
+.hover-icon-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f1f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #000;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+    scale: 1.05;
+  }
+}
+
+.draft-tape {
+  background-size: 16px 16px;
+  width: 100%;
+  position: absolute;
+
+  & img:nth-child(1) {
+    top: -120px;
+    left: 150px;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transform: rotate(45deg);
+  }
+
+  & img:nth-child(2) {
+    top: -170px;
+    left: -50px;
+    position: absolute;
+    width: 150%;
+    height: auto;
+    transform: rotate(-15deg);
+  }
+}

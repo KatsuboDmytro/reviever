@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-import { UserButton, useUser } from "@clerk/clerk-react";
-import { ChevronDown } from "lucide-react";
+import { signOut } from "firebase/auth";
+import { ChevronDown, Settings } from "lucide-react";
 
+import { useAppSelector } from "../../../../app/hooks";
+import { auth } from "../../../../firebase/firebase";
 import { menuContent, menuItems } from "../../../../vars";
 import { BurgerMenu, MainButton } from "../../../index";
 import "./header.scss";
 
 export const Header = () => {
-  const { isSignedIn } = useUser();
+  const { authors } = useAppSelector((state) => state.authors);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -41,6 +43,16 @@ export const Header = () => {
     return baseOffset + index * itemWidth;
   };
 
+  const handleLogOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/auth/sign-in");
+      console.log(auth?.currentUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <header
       className={`header ${expanded ? "expanded" : ""}`}
@@ -48,14 +60,12 @@ export const Header = () => {
     >
       <div className={`box container ${isVisible ? "visible" : "hidden"}`}>
         <div className="box__logos">
-          {/* <img
-            src="img/icons/burger.svg"
-            alt="burger"
-          /> */}
-          {isSignedIn && <BurgerMenu />}
-          <img src="img/icons/main.svg" alt="Reviever's main logo" />
+          {authors && <BurgerMenu />}
+          <Link to={"/"}>
+            <img src="/img/icons/main.svg" alt="Reviever's main logo" />
+          </Link>
         </div>
-        {isSignedIn && (
+        {authors && (
           <nav className="box__nav">
             {menuItems.map((item) => (
               <li
@@ -72,8 +82,18 @@ export const Header = () => {
           </nav>
         )}
         <div className="box__actions">
-          {isSignedIn ? (
-            <UserButton />
+          {authors ? (
+            <>
+              {authors && (
+                <div
+                  onClick={() => navigate("/settings")}
+                  className="box__settings"
+                >
+                  <Settings />
+                </div>
+              )}
+              <MainButton onClick={handleLogOut}>LogOut</MainButton>
+            </>
           ) : (
             <MainButton className="box__button" onClick={signIn}>
               Розпочати
